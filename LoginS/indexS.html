@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png"href="Logo.jpg"><title>R.I.A</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="modalOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center; font-family: sans-serif;">
+    
+    <div id="loadingModal1" class="loading-modal" style="display: none; background: white; padding: 30px; border-radius: 10px; text-align: center; width: 320px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div class="spinner" style="border: 4px solid #ffff; border-top: 4px solid #000000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px auto;"></div>
+        <h3 style="margin: 0 0 10px 0; color: #000;">Authenticating LRN...</h3>
+        <p style="margin: 0; color: #000; font-size: 14px;">Verifying credentials in database. Please wait...</p>
+    </div>
+
+    <div id="loadingModal2" class="loading-modal" style="display: none; background: white; padding: 30px; border-radius: 10px; text-align: center; width: 320px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div class="spinner" style="border: 4px solid #ffff; border-top: 4px solid #000000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px auto;"></div>
+        <h3 style="margin: 0 0 10px 0; color: #000;">Fetching Profile...</h3>
+        <p style="margin: 0; color: #000; font-size: 14px;">Loading user dashboard and data components...</p>
+    </div>
+
+    <div id="loadingModal3" class="loading-modal" style="display: none; background: white; padding: 30px; border-radius: 10px; text-align: center; width: 320px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <div class="spinner" style="border: 4px solid #ffff; border-top: 4px solid #000000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px auto;"></div>
+        <h3 style="margin: 0 0 10px 0; color: #000;">Almost Ready!</h3>
+        <p style="margin: 0; color: #000; font-size: 14px;">Redirecting you securely to your page...</p>
+    </div>
+
+</div>
+
+<div class="app-card">
+    <div class="banner-container">
+      <img 
+        src="B.jpg" 
+        onerror="this.onerror=null; this.src='banner.png';" 
+        alt="Header Banner" 
+        class="banner-img"/>
+
+      <button class="cs-btn" id="openCsModal" type="button" aria-label="Customer Support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+        </svg>
+      </button>
+
+      <div class="logo-container">
+        <img 
+          src="Logo.jpg" 
+          onerror="this.onerror=null; this.src='logo.png';" 
+          alt="Logo"/>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="header-row">
+        <h1>Welcome Student</h1>
+<button class="info-btn" id="openInfoModal" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" y1="16" x2="12" y2="12"></line>
+    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+  </svg>
+</button>
+        </button>
+      </div>
+      <p class="subtitle">Sign in to continue to your dashboard</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="lrn">LRN:</label>
+          <div class="input-wrapper">
+            <input type="text" id="lrn" name="lrn" required autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" name="password" required />
+            <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+                <line x1="3" y1="21" x2="21" y2="3" class="eye-slash-line" stroke-linecap="round"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="error-msg" id="errorMsg">Invalid LRN or Password. Please try again.</div>
+
+        <div class="passkey-container">
+<a href="passkey.html" class="passkey-link">
+  Passkey
+  <svg id="passkeyArrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+        </div>
+
+        <div class="action-row">
+          <a href="forgot-password.html" class="forgot-link">Forget Password</a>
+          <button type="submit" class="login-btn">Login</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-overlay" id="infoModal">
+      <div class="modal-box">
+        <button class="modal-close" id="closeInfoModal">&times;</button>
+        <h3>Student Portal Info</h3>
+        <p>Please enter your 12-digit Learner Reference Number (LRN) and password to access your student dashboard.</p>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="csModal">
+      <div class="modal-box">
+        <button class="modal-close" id="closeCsModal">&times;</button>
+        <h3>Customer Service</h3>
+        <p>Coming Soon</p>
+      </div>
+    </div>
+  </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
