@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png"href="Logo.jpg"><title>R.I.A</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="banner">
+    <img src="B.jpg" alt="Banner">
+</div>
+
+<button id="infoBtn" style="width: 70px; height: 70px; padding: 0; border-radius: 50%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="48" height="48">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </svg>
+</button>
+
+<div class="container">
+
+    <img src="Logo.jpg" class="logo">
+
+    <h2>What kind of user are you?</h2>
+
+    <button class="mainBtn"
+    onclick="location.href='../LoginS/indexS.html'">
+    Student
+    </button>
+
+    <button class="mainBtn"
+    onclick="location.href='../LoginT/indexT.html'">
+    Teacher
+    </button>
+
+</div>
+
+<div class="bottom">
+
+<a href="register.html">
+Create Account
+</a>
+
+<a href="special.html" class="special" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; overflow: hidden;">
+    Special User
+  <svg id="passkeyArrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+</div>
+
+<div id="infoModal">
+
+<div class="modalBox">
+
+<button id="closeModal">✕</button>
+
+<h3>About</h3>
+
+<p>
+Welcome to the <strong>Recording Information Application (R.I.A.)</strong>.<br><br>
+
+Please select the appropriate user category to proceed to your designated portal.<br><br>
+
+<strong>Student</strong> &ndash; Access the student portal to view academic information, announcements, and other student services.<br><br>
+
+<strong>Teacher</strong> &ndash; Access the teacher portal to manage classes, records, and educational resources.<br><br>
+
+<strong>Special User</strong> &ndash; Access the administrative portal for authorized personnel with advanced system privileges.<br><br>
+
+Thank you for using <strong>R.I.A</strong>, your trusted platform for efficient and organized information management.
+</p>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

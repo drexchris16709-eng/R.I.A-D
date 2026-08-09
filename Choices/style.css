@@ -1,0 +1,157 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#fff;
+overflow:hidden;
+width:100vw;
+height:100vh;
+position:fixed;
+top:0;
+left:0;
+}
+
+.banner{
+width:100%;
+height:210px;
+overflow:hidden;
+flex-shrink:0;
+}
+
+.banner img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+#infoBtn{
+position:fixed;
+top:229px;
+right:20px;
+}
+
+.container{
+text-align:center;
+padding:30px 20px;
+}
+
+.logo{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    display:block;
+    margin:auto;
+    border:4px solid #000;
+    border-radius:50%;
+    background:#fff;
+    padding:4px;
+    transform: translateY(-12px);
+}
+
+h2{
+font-size:24px;
+font-weight:400;
+margin-bottom:35px;
+}
+
+.mainBtn{
+display:block;
+width:85%;
+margin:20px auto;
+padding:22px;
+font-size:30px;
+font-weight:bold;
+border:none;
+border-radius:60px;
+background:black;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.mainBtn:active{
+transform:scale(.97);
+}
+
+.bottom{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px;
+background:#fff;
+}
+
+.bottom a{
+color:black;
+}
+
+.special{
+text-decoration:none;
+font-size:22px;
+transform: translateY(-2px);
+}
+
+#infoModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+}
+
+.modalBox{
+width:90%;
+max-width:330px;
+background:white;
+border-radius:20px;
+padding:25px;
+position:relative;
+text-align:center;
+}
+
+#closeModal{
+position:absolute;
+top:8px;
+right:12px;
+border:none;
+background:none;
+font-size:20px;
+cursor:pointer;
+}
+
+.modalBox h3{
+margin-bottom:15px;
+}
+
+.modalBox p{
+font-size:15px;
+line-height:1.5;
+}
+
+html{
+overflow:hidden;
+width:100%;
+height:100%;
+}
+
+*{
+-webkit-tap-highlight-color:transparent;
+}
+
+img{
+user-select:none;
+-webkit-user-drag:none;
+}
