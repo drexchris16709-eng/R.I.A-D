@@ -1,5 +1,5 @@
 const studentDatabase = [
-  { lrn: "136741140482", password: "LMND4556", page: "../Lobendino/Dashboard/indexL.html" },
+  { lrn: "136741140482", password: "LMND4556", page: "../Lobendino/SD.html" },
   { lrn: "109411140062", password: "SSDDFF45", page: "Pineda/SD.html" },
   { lrn: "136741140522", password: "TTUGKLM23", page: "Milgar/SD.html" },
   { lrn: "100000000004", password: "loginPass2026", page: "student4.html" },
