@@ -28,10 +28,105 @@ height:100%;
 object-fit:cover;
 }
 
-#infoBtn{
-position:fixed;
-top:229px;
-right:20px;
+.gear-btn {
+    position: fixed;
+    top: 229px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.gear-icon {
+    width: 48px;
+    height: 48px;
+    fill: #000000;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border-left: 1px solid #222222;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 101;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.close-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 40px;
+    padding: 4px;
+}
+
+.close-icon {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    padding: 6px 0;
+}
+
+.menu-icon {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
+    flex-shrink: 0;
+}
+
+.menu-text {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
 .container{
@@ -70,11 +165,6 @@ border-radius:60px;
 background:black;
 color:white;
 cursor:pointer;
-transition:.3s;
-}
-
-.mainBtn:active{
-transform:scale(.97);
 }
 
 .bottom{
@@ -84,18 +174,15 @@ bottom:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:20px;
+align-items:center;
+padding:20px 24px;
 background:#fff;
 }
 
-.bottom a{
-color:black;
-}
-
-.special{
-text-decoration:none;
-font-size:22px;
-transform: translateY(-2px);
+.bottom-link {
+color: #000000;
+text-decoration: none;
+font-size: 16px;
 }
 
 #infoModal{
@@ -110,12 +197,14 @@ transform: translateY(-2px);
     align-items: center;
     padding: 20px;
     backdrop-filter: blur(2px);
+    z-index: 105;
 }
 
 .modalBox{
 width:90%;
 max-width:330px;
 background:white;
+color:black;
 border-radius:20px;
 padding:25px;
 position:relative;
