@@ -10,328 +10,95 @@
 </head>
 <body>
 
-  <button id="sbMenuBtn" class="sb-toggle-btn" onclick="sbToggleSidebar()" aria-label="Open menu">☰</button>
+<button class="menu-btn" id="menuBtn">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+</button>
 
-  <div id="sbOverlay" class="sb-overlay" onclick="sbToggleSidebar()"></div>
+<div class="overlay" id="overlay"></div>
 
-  <div class="sb-sidebar" id="sbSidebar">
+<div class="phone" id="sidebarPhone">
 
-    <div class="sb-sidebar-header">
-      <img src="Logo.jpg" alt="User Avatar" class="sb-sidebar-profile-img" onerror="this.onerror=null; this.src='logo.png';" />
-      <h3 class="sb-sidebar-title">R.I.A Dashboard</h3>
+  <div class="header">
+    <div class="logo">
+      <img src="Logo.jpg" alt="R.I.A logo">
     </div>
+    <h1>R.I.A Dashboard</h1>
+    <div class="dots">&#8226;&#8226;&#8226;</div>
+  </div>
+  <div class="divider"></div>
 
-    <div class="sb-sidebar-menu hide-scrollbar">
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(0)">
-          Main Section<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>Welcome Message</button>
-          <button>Latest Announcements (R.I.A)</button>
-          <button>Upcoming Events</button>
-          <button>Quick Reminder</button>
-          <button>Featured Photos</button>
-          <button>Class Rules</button>
-          <button>School Calendar</button>
-          <button>Recent Activities Recap</button>
-          <button>Contact Us (R.I.A)</button>
-          <button>Feedback (R.I.A)</button>
-          <button>Announcements Archive</button>
-          <button>Class Schedule</button>
-          <button>Importants Links (R.I.A)</button>
-          <button>Fund Badget</button>
-          <button>Grades (All Students)</button>
-          <button>Weather & Class Suspension</button>
-        </div>
+  <div class="section-label"><span>Tasks Assigned</span><span></span></div>
+  <div class="tasks-scroll" id="tasksScroll">
+    <div class="task-card">
+      <div class="task-info"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="#111"/></svg></div>
+      <div>
+        <div class="task-deadline">Deadline : ---</div>
+        <div class="task-title">Unkown Title</div>
+        <div class="task-sub">Unknown Subject</div>
       </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(1)">
-          Cleaners & Supplies<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>List of Cleaners</button>
-          <button>Cleaning Guidlines & Standards</button>
-          <button>Supplies Checklist</button>
-          <button>Attendance Record (Assigned Group)</button>
-          <button>Reminders & Tips</button>
-          <button>Feedback Form</button>
-          <button>Before/After Photo Upload</button>
-          <button>Area Status Check</button>
-          <button>File Report</button>
-        </div>
+      <div class="task-view">View</div>
+    </div>    <div class="task-card">
+      <div class="task-info"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="#111"/></svg></div>
+      <div>
+        <div class="task-deadline">Deadline : ---</div>
+        <div class="task-title">Unkown Title</div>
+        <div class="task-sub">Unknown Subject</div>
       </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(2)">
-          Attendance Record<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>Daily Attendance Record</button>
-          <button>Weekly Summary</button>
-          <button>Monthly Report</button>
-          <button>Absents & Late Lists</button>
-          <button>Excuse Slip Submission</button>
-          <button>Attendance Guidelines</button>
-          <button>Adviser Record</button>
-          <button>Overall Attendance Status</button>
-          <button>Medical Certificate Upload</button>
-          <button>Attendance Percentage</button>
-          <button>Correction Request Form</button>
-        </div>
-      </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(3)">
-          Classroom Officers<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>President</button>
-          <button>Vice President</button>
-          <button>Secretary</button>
-          <button>External Secretary</button>
-          <button>Treasurer</button>
-          <button>Auditor</button>
-          <button>P.I.O</button>
-          <button>S.M.M</button>
-          <button>PO1</button>
-          <button>PO2</button>
-        </div>
-      </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(4)">
-          Learning Modules<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>All Subjects</button>
-          <button>Weekly Modules</button>
-          <button>Download Materials</button>
-          <button>Assigmenst Instructions</button>
-          <button>Submission Links</button>
-          <button>Reviewers & References</button>
-          <button>Missing Requirements</button>
-          <button>Archive Modules</button>
-          <button>File Request Form</button>
-        </div>
-      </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(5)">
-          Settings & Privacy<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>Edit Profile (Pro Mode)</button>
-          <button>Change Password</button>
-          <button>Notificatons</button>
-          <button>Privacy Settings</button>
-          <button>Help & Support</button>
-          <button>About This Website</button>
-          <button>Contact Developer</button>
-          <button>Emergency Contact</button>
-          <button>R.I.A Code (Selected Users)</button>
-          <button>Terms of Service</button>
-          <button>Share Website Link</button>
-          <button>Backup & Restore</button>
-          <button>Switch Mode (Professional / Formal)</button>
-          <button>Animation Toggle</button>
-          <button>Upload BG Video (Pro Mode)</button>
-          <button>Access Log & Visitor History</button>
-          <button>Language</button>
-          <button>Clear Cache</button>
-          <button>Os Update</button>
-        </div>
-      </div>
-
-      <div class="menuItem">
-        <button class="sb-mainBtn" onclick="sbToggleDropdown(6)">
-          Special Actions<span class="sb-arrow-icon">▼</span>
-        </button>
-        <div class="sb-dropdown">
-          <button>Research Project (R.I.A)</button>
-          <button>Admin Exclusive</button>
-          <button>Private Records</button>
-          <button>Restricted Section (Officers)</button>
-          <button>Officers & Adviser Notes</button>
-          <button>Disciplinary Case Notes</button>
-          <button>Teacher Dashboard</button>
-          <button>Student Progress</button>
-          <button>Pending Submissions</button>
-          <button>Research Monitoring</button>
-          <button>AI Study Assistant (Classified)</button>
-          <button>Research Hub</button>
-          <button>Student Dashboard</button>
-          <button>Request Music</button>
-        </div>
-      </div>
+      <div class="task-view">View</div>
     </div>
-
-    <div class="sb-sidebar-bottom">
-      <div class="sb-slideshow-wrapper">
-        <div class="sb-slideshow-header">
-          <span class="sb-slideshow-title">Today's Feature</span>
-          <button class="sb-see-more-btn" type="button">See More</button>
-        </div>
-        <div class="sb-slideshow-container">
-          <div class="sb-slide active-slide">
-            <img src="D1.jpg" alt="Slide 1" onerror="this.onerror=null; this.src='banner.png';" />
-          </div>
-          <div class="sb-slide">
-            <img src="D2.jpg" alt="Slide 2" onerror="this.onerror=null; this.src='banner.png';" />
-          </div>
-          <div class="sb-slide">
-            <img src="D3.jpg" alt="Slide 3" onerror="this.onerror=null; this.src='banner.png';" />
-          </div>
-          <div class="sb-slide">
-            <img src="D4.jpg" alt="Slide 4" onerror="this.onerror=null; this.src='banner.png';" />
-          </div>
-        </div>
+    <div class="task-card">
+      <div class="task-info"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="#111"/></svg></div>
+      <div>
+        <div class="task-deadline">Deadline : ---</div>
+        <div class="task-title">Unkown Title</div>
+        <div class="task-sub">Unknown Subject</div>
       </div>
-
-      <div class="sb-qa-header">
-        <h3 class="sb-section-title">Quick Access</h3>
-      </div>
-
-      <div class="sb-vertical-buttons-container">
-        <button class="sb-vertical-btn" onclick="openModal('R.I.A Pro', '⭐ R.I.A Pro: Explore exclusive deals, advanced membership perks, and high-tier platform features.')">⭐ R.I.A Pro (Deals & Features)</button>
-        <button class="sb-vertical-btn" onclick="openModal('Theme Settings', '🎨 Theme: Customize your workspace experience by switching between Dark and Light display modes.')">🎨 Theme (Dark / Light Mode)</button>
-        <button class="sb-vertical-btn" onclick="openModal('Rankings', '🏆 Rankings: View top-performing student lists, leaderboards, and activity rankings.')">🏆 Rankings (Top)</button>
-        <button class="sb-vertical-btn" onclick="openModal('Special User Section', '🛡️ Special User Section: Access restricted user privileges, VIP tools, and designated utilities.')">🛡️ Special User Section</button>
-
-        <div id="qa-extra-menu-wrapper">
-          <div id="qa-extra-menu-inner">
-            <div id="qa-extra-menu-scrollable">
-              <button class="sb-vertical-btn" onclick="openModal('Super AI', '✨ Super AI: Interact with your advanced neural assistant (STX) for queries, automation, and study help.')">✨ Super AI (STX)</button>
-              <button class="sb-vertical-btn" onclick="openModal('Albums', '🖼️ Albums: Browse organized media files containing pictures, project snapshots, and videos.')">🖼️ Albums (Pictures & Videos)</button>
-              <button class="sb-vertical-btn" onclick="openModal('OS Info', '🌀 OS Info: View details about your operating system, browser specifications, and system environment.')">🌀 OS Info (Coming Soon)</button>
-              <button class="sb-vertical-btn" onclick="openModal('Test Features', '🧪 Test Features: Try out experimental tools, beta functions, and early access features.')">🧪 Test Features (Beta)</button>
-              <button class="sb-vertical-btn" onclick="openModal('Developer Options', '🛠️ Developer Options: Access advanced system configurations, API logs, and developer tools.')">🛠️ Developer Options (Advanced)</button>
-              <button class="sb-vertical-btn" onclick="openModal('Future Mode', '🚀 Future Mode: Toggle next-generation UI concepts, AI predictions, and experimental themes.')">🚀 Future Mode (Coming Soon)</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sb-qa-bottom-toggle-container">
-        <button id="qa-see-more-toggle" onclick="sbToggleExtraMenu()">
-          <span id="qa-toggle-text">See More</span>
-          <svg id="qa-chevron-icon" viewBox="0 0 24 24">
-            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
-          </svg>
-        </button>
-      </div>
-
-      <h3 class="sb-section-title">Extensions</h3>
-      <div class="sb-icon-long-box">
-        <button class="sb-icon-btn" onclick="openModal('Analytics Dashboard', '📈 Analytics: Review real-time metrics, platform traffic data, and engagement trends.')">📈</button>
-        <button class="sb-icon-btn" onclick="openModal('Search Utility', '🔍 Search: Enter keywords to quickly find files, links, modules, or announcements.')">🔍</button>
-        <button class="sb-icon-btn" onclick="openModal('Portfolio View', '📁 Portfolio: Inspect user achievements, uploaded files, and stored credential items.')">📁</button>
-        <button class="sb-icon-btn" onclick="openModal('Document Repository', '📄 Document Repository: Access all official documents, forms, and downloadable attachments.')">📄</button>
-      </div>
-
-      <div class="ria-ads-slider-wrapper">
-        <h3 class="sb-section-title">Subscription Plans</h3>
-
-        <div class="ria-ads-carousel" id="riaAdsCarousel" onscroll="sbUpdateDots()">
-
-          <div class="ria-neo-smoke-card">
-            <div class="ria-smoke-content">
-              <div class="ria-smoke-header">
-                <div class="ria-title-group">
-                  <span class="ria-neo-badge">24H Pass</span>
-                  <h4 class="ria-smoke-title">Daily Pro</h4>
-                </div>
-                <div class="ria-price-tag">
-                  <p class="ria-price">₱49.99</p>
-                  <span class="ria-period">/ day</span>
-                </div>
-              </div>
-              <p class="ria-smoke-info">Enjoy 24-hour instant authorization with full customization and temporary mod perks.</p>
-              <div class="ria-smoke-features">
-                <div class="ria-feature-item"><span class="ria-dot"></span> 24h Custom BG & Profile</div>
-                <div class="ria-feature-item"><span class="ria-dot"></span> Temp Mod & Admin Perks</div>
-              </div>
-              <button class="ria-smoke-btn" onclick="openModal('Daily Pro', 'You selected the Daily Pro plan at ₱49.99/day.')">
-                Get Daily Deal
-              </button>
-            </div>
-          </div>
-
-          <div class="ria-neo-smoke-card">
-            <div class="ria-smoke-content">
-              <div class="ria-smoke-header">
-                <div class="ria-title-group">
-                  <span class="ria-neo-badge">Popular</span>
-                  <h4 class="ria-smoke-title">Monthly Pro</h4>
-                </div>
-                <div class="ria-price-tag">
-                  <p class="ria-price">₱199.99</p>
-                  <span class="ria-period">/ month</span>
-                </div>
-              </div>
-              <p class="ria-smoke-info">Full system operations, complete customization, and early beta access with enhanced security.</p>
-              <div class="ria-smoke-features">
-                <div class="ria-feature-item"><span class="ria-dot"></span> Full Customization (BG, PFP & Features)</div>
-                <div class="ria-feature-item"><span class="ria-dot"></span> Beta Testing & Advanced Account Security</div>
-              </div>
-              <button class="ria-smoke-btn" onclick="openModal('Monthly Pro', 'You selected the Monthly Pro plan at ₱199.99/month.')">
-                Get Monthly Deal
-              </button>
-            </div>
-          </div>
-
-          <div class="ria-neo-smoke-card">
-            <div class="ria-smoke-content">
-              <div class="ria-smoke-header">
-                <div class="ria-title-group">
-                  <span class="ria-neo-badge discount">Save 35%</span>
-                  <h4 class="ria-smoke-title">Annual Pro</h4>
-                </div>
-                <div class="ria-price-tag">
-                  <p class="ria-price">₱1,299.99</p>
-                  <span class="ria-period">/ year</span>
-                </div>
-              </div>
-              <p class="ria-smoke-info">Unlock all features and put your account at the top of our first-priority list.</p>
-              <div class="ria-smoke-features">
-                <div class="ria-feature-item"><span class="ria-dot"></span> Unlock All Features & Super VIP Access</div>
-                <div class="ria-feature-item"><span class="ria-dot"></span> 78% Discount on Admin Features</div>
-              </div>
-              <button class="ria-smoke-btn" onclick="openModal('Annual Pro', 'You selected the Annual Pro plan at ₱1,299.99/year.')">
-                Get Annual Deal
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="ria-dots-pagination">
-          <span class="ria-page-dot active" onclick="sbScrollToCard(0)"></span>
-          <span class="ria-page-dot" onclick="sbScrollToCard(1)"></span>
-          <span class="ria-page-dot" onclick="sbScrollToCard(2)"></span>
-        </div>
-      </div>
-
-      <div class="sb-auth-group">
-        <button class="sb-auth-btn sb-auth-btn-login" onclick="sbOpenLogoutModal()">Log Out</button>
-        <button class="sb-auth-btn sb-auth-btn-signup" onclick="sbToggleSidebar();">Switch Account</button>
-      </div>
-
-      <div id="sbLogoutModal">
-    <div class="sb-modal-content">
-        <h3>Confirm Logout</h3>
-        <p>Are you sure you want to log out and close this session?</p>
-        <div class="sb-modal-buttons">
-            <button class="sb-btn-cancel" onclick="sbCloseLogoutModal()">Cancel</button>
-            <button class="sb-btn-ok" onclick="sbExecuteLogout()">OK</button>
-        </div>
+      <div class="task-view">View</div>
     </div>
-</div>
-
-      <button class="sb-close-sidebar-btn" onclick="sbToggleSidebar()">Close</button>
+    <div class="task-card">
+      <div class="task-info"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="#111"/></svg></div>
+      <div>
+        <div class="task-deadline">Deadline : ---</div>
+        <div class="task-title">Unkown Title</div>
+        <div class="task-sub">Unknown Subject</div>
+      </div>
+      <div class="task-view">View</div>
     </div>
   </div>
+  <div class="section-label" style="padding-top:2px;">
+    <span></span><span class="see-more">See More</span>
+  </div>
+
+  <div class="accordions" id="accordions"></div>
+
+  <div class="section-label" style="padding-top:20px;"><span>Today's Feature</span><span class="see-more">See More</span></div>
+  <div class="feature-wrap">
+    <div class="feature-slider">
+      <div class="feature-track" id="featureTrack"></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="padding-top:22px;"><span>Quick Access</span><span></span></div>
+  <div class="qa-list" id="qaList"></div>
+  <div class="qa-toggle"><button id="qaToggleBtn">See More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button></div>
+
+  <div class="ext-label">Extensions</div>
+  <div class="ext-pill"><div class="ext-row" id="extScroll"></div></div>
+
+  <div class="sub-label">Subscription Plans</div>
+  <div class="plan-wrap">
+    <div class="feature-slider" style="border:none;">
+      <div class="plan-track" id="planTrack"></div>
+    </div>
+  </div>
+  <div class="plan-dots" id="planDots"></div>
+
+  <div class="footer-row">
+    <div class="footer-btn logout">LOGOUT</div>
+    <div class="footer-btn switch">SWITCH</div>
+  </div>
+
+</div>
 
   <div class="banner">
     <img src="B.jpg" alt="Dashboard Banner" class="banner-img" onerror="this.onerror=null; this.src='banner.png';" />
@@ -346,7 +113,7 @@
     </div>
   </div>
 
-  <div class="greeting">Hello Franze!</div>
+  <div class="greeting">Hello Christian!</div>
   <div class="dashboard-header">
     <div class="title-area">
       <h1>Student Dashboard</h1>
@@ -387,30 +154,27 @@
 
     <div class="dues-list hide-scrollbar">
       <a href="entrepreneurship.html" class="due-item">
-        <span class="due-item-title">Entrepreneurship</span>
+        <span class="due-item-title">Unknown Subject</span>
         <div class="due-item-actions">
-          <span class="due-status">Due</span>
-          <button class="btn-question-modal" aria-label="Task Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('Entrepreneurship Details', 'This task is due soon. Make sure to complete the business plan before submitting.')">
+          <span class="due-status"></span>
             <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </button>
         </div>
       </a>
 
       <a href="oral-communication.html" class="due-item">
-        <span class="due-item-title">Oral Communication</span>
+        <span class="due-item-title">Unknown Subject</span>
         <div class="due-item-actions">
-          <span class="due-status">Due</span>
-          <button class="btn-question-modal" aria-label="Task Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('Oral Communication Details', 'Speech recording submission is required prior to the deadline.')">
+          <span class="due-status"></span>
             <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </button>
         </div>
       </a>
 
       <a href="hope.html" class="due-item">
-        <span class="due-item-title">Hope</span>
+        <span class="due-item-title">Unknown Subject</span>
         <div class="due-item-actions">
-          <span class="due-status">Due</span>
-          <button class="btn-question-modal" aria-label="Task Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('Hope Details', 'Physical fitness routine logs must be submitted online.')">
+          <span class="due-status"></span>
             <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </button>
         </div>
@@ -425,7 +189,7 @@
   <div class="attendance-scroll hide-scrollbar">
     <a href="attendance-january.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">January : Summarize</span>
+        <span class="attendance-card-title">June: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="January Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('January 2026 Summary', 'Total Days Recorded: 22\nPresent: 20 Days\nAbsent: 2 Days');">
@@ -435,18 +199,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">20/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">2/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-february.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">February : Summarize</span>
+        <span class="attendance-card-title">July: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="February Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('February 2026 Summary', 'Total Days Recorded: 19\nPresent: 18 Days\nAbsent: 1 Day');">
@@ -456,18 +220,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">18/28 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">1/28 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-march.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">March : Summarize</span>
+        <span class="attendance-card-title">Aug: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="March Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('March 2026 Summary', 'Total Days Recorded: 22\nPresent: 14 Days\nAbsent: 8 Days');">
@@ -477,18 +241,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">14/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">8/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-april.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">April : Summarize</span>
+        <span class="attendance-card-title">Sept: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="April Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('April 2026 Summary', 'Total Days Recorded: 20\nPresent: 18 Days\nAbsent: 2 Days');">
@@ -498,18 +262,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">18/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">2/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-may.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">May : Summarize</span>
+        <span class="attendance-card-title">Oct: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="May Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('May 2026 Summary', 'Total Days Recorded: 21\nPresent: 20 Days\nAbsent: 1 Day');">
@@ -519,18 +283,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">20/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">1/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-june.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">June : Summarize</span>
+        <span class="attendance-card-title">Nov: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="June Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('June 2026 Summary', 'Total Days Recorded: 22\nPresent: 19 Days\nAbsent: 3 Days');">
@@ -540,18 +304,18 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">19/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">3/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-july.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">July : Summarize</span>
+        <span class="attendance-card-title">Dec: Summarize</span>
         <div class="attendance-card-right">
           <span class="attendance-year">2026</span>
           <button class="btn-card-info" aria-label="July Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('July 2026 Summary', 'Total Days Recorded: 21\nPresent: 21 Days\nAbsent: 0 Days');">
@@ -561,20 +325,20 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">21/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">0/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-august.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">August : Summarize</span>
+        <span class="attendance-card-title">Jan: Summarize</span>
         <div class="attendance-card-right">
-          <span class="attendance-year">2026</span>
+          <span class="attendance-year">2027</span>
           <button class="btn-card-info" aria-label="August Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('August 2026 Summary', 'Total Days Recorded: 19\nPresent: 15 Days\nAbsent: 4 Days');">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
           </button>
@@ -582,20 +346,20 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">15/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">4/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-september.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">September : Summarize</span>
+        <span class="attendance-card-title">Feb: Summarize</span>
         <div class="attendance-card-right">
-          <span class="attendance-year">2026</span>
+          <span class="attendance-year">2027</span>
           <button class="btn-card-info" aria-label="September Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('September 2026 Summary', 'Total Days Recorded: 19\nPresent: 17 Days\nAbsent: 2 Days');">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
           </button>
@@ -603,20 +367,20 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">17/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">2/30 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
 
     <a href="attendance-october.html" class="attendance-card">
       <div class="attendance-card-top">
-        <span class="attendance-card-title">October : Summarize</span>
+        <span class="attendance-card-title">March: Summarize</span>
         <div class="attendance-card-right">
-          <span class="attendance-year">2026</span>
+          <span class="attendance-year">2027</span>
           <button class="btn-card-info" aria-label="October Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('October 2026 Summary', 'Total Days Recorded: 20\nPresent: 19 Days\nAbsent: 1 Day');">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
           </button>
@@ -624,53 +388,11 @@
       </div>
       <div class="attendance-pill">
         <span class="status-present">Present</span>
-        <span class="pill-count">19/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="attendance-pill">
         <span class="status-absent">Absent</span>
-        <span class="pill-count">1/31 Days</span>
-      </div>
-      <div class="card-view-more">View More</div>
-    </a>
-
-    <a href="attendance-november.html" class="attendance-card">
-      <div class="attendance-card-top">
-        <span class="attendance-card-title">November : Summarize</span>
-        <div class="attendance-card-right">
-          <span class="attendance-year">2026</span>
-          <button class="btn-card-info" aria-label="November Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('November 2026 Summary', 'Total Days Recorded: 20\nPresent: 18 Days\nAbsent: 2 Days');">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="attendance-pill">
-        <span class="status-present">Present</span>
-        <span class="pill-count">18/30 Days</span>
-      </div>
-      <div class="attendance-pill">
-        <span class="status-absent">Absent</span>
-        <span class="pill-count">2/30 Days</span>
-      </div>
-      <div class="card-view-more">View More</div>
-    </a>
-
-    <a href="attendance-december.html" class="attendance-card">
-      <div class="attendance-card-top">
-        <span class="attendance-card-title">December : Summarize</span>
-        <div class="attendance-card-right">
-          <span class="attendance-year">2026</span>
-          <button class="btn-card-info" aria-label="December Attendance Details" onclick="event.stopPropagation(); event.preventDefault(); openModal('December 2026 Summary', 'Total Days Recorded: 17\nPresent: 12 Days\nAbsent: 5 Days');">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="attendance-pill">
-        <span class="status-present">Present</span>
-        <span class="pill-count">12/31 Days</span>
-      </div>
-      <div class="attendance-pill">
-        <span class="status-absent">Absent</span>
-        <span class="pill-count">5/31 Days</span>
+        <span class="pill-count">Unknown Days</span>
       </div>
       <div class="card-view-more">View More</div>
     </a>
@@ -786,7 +508,7 @@
       <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
     </button>
     <div class="footer-copyright">
-      All right reserve of R.I.A Recording Information Application
+      All right reserved of R.I.A Recording Information Application
     </div>
   </footer>
 
