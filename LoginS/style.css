@@ -35,40 +35,18 @@ body {
   display: block;
 }
 
-.cs-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #ffffff;
-  z-index: 10;
-  transition: transform 0.2s ease;
-}
-
-.cs-btn:hover {
-  transform: scale(1.1);
-}
-
-.cs-btn svg {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0));
-}
-
 .logo-container {
   position: absolute;
   bottom: 12px;
   left: 16px;
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   overflow: hidden;
   z-index: 10;
 }
@@ -80,54 +58,64 @@ body {
 }
 
 .content {
-  padding: 24px 24px 0 24px;
+  padding: 20px 24px 24px 24px;
   flex: 1;
-  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .header-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
+  align-items: center;
+  margin-bottom: 2px;
 }
 
 .header-row h1 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   color: #000000;
   letter-spacing: -0.5px;
 }
 
-.info-btn {
+.gear-btn {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  color: #000000;
-  transition: opacity 0.2s;
-  flex-shrink: 0;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear-icon {
+  width: 32px;
+  height: 32px;
+  fill: #000000;
 }
 
 .subtitle {
-  font-size: 15px;
+  font-size: 16px;
   color: #000;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 800;
   color: #000000;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .input-wrapper {
@@ -137,18 +125,14 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  height: 52px;
-  border: 1.5px solid #000000;
-  border-radius: 4px;
+  height: 56px;
+  border: 2px solid #000000;
+  border-radius: 2px;
   padding: 0 45px 0 14px;
-  font-size: 16px;
+  font-size: 18px;
   outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.input-wrapper input:focus {
-  border-width: 2px;
-  border-color: #000000;
+  background-color: #fff;
+  color: #000;
 }
 
 .toggle-password {
@@ -163,11 +147,6 @@ body {
   padding: 4px;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.toggle-password svg {
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .toggle-password .eye-slash-line {
@@ -176,78 +155,216 @@ body {
   transition: stroke-dashoffset 0.25s ease-in-out;
 }
 
-.toggle-password.active svg {
-  transform: scale(1.1);
-}
-
 .toggle-password.active .eye-slash-line {
   stroke-dashoffset: 0;
 }
 
 .error-msg {
-  color: red;
+  color: #d32f2f;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: none;
 }
 
-.passkey-container {
+.navigation-row {
   display: flex;
-  justify-content: flex-end;
-  margin-top: -10px;
-  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  margin-bottom: auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+}
+
+.back-circle {
+  width: 36px;
+  height: 36px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.back-circle svg {
+  width: 24px;
+  height: 24px;
 }
 
 .passkey-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
   color: #000000;
   text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
 }
 
-.passkey-link:hover {
-  opacity: 0.7;
+.key-icon {
+  width: 26px;
+  height: 26px;
+  fill: #000000;
 }
 
 .action-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  padding: 10px 0 0 0;
-  flex-shrink: 0;
+  padding-top: 16px;
+  padding-bottom: 8px;
 }
 
 .forgot-link {
   color: #000000;
-  font-size: 16px;
-  text-decoration: underline;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
-}
-
-.forgot-link:hover {
-  opacity: 0.7;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 400;
 }
 
 .login-btn {
   background-color: #000000;
   color: #ffffff;
   border: none;
-  border-radius: 35px;
-  padding: 14px 44px;
-  font-size: 22px;
+  border-radius: 40px;
+  padding: 14px 48px;
+  font-size: 26px;
   font-weight: 700;
   cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.login-btn:active {
+  opacity: 0.8;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 320px;
+  height: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border-left: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 40px;
+  padding: 4px;
+}
+
+.close-icon {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.menu-icon {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff;
+  flex-shrink: 0;
+}
+
+.menu-text {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+#modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-modal {
+  display: none;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
   text-align: center;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 320px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #000000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .modal-overlay {
@@ -273,54 +390,26 @@ body {
   background: #ffffff;
   border-radius: 12px;
   width: 100%;
-  max-width: 360px;
-  padding: 24px;
+  max-width: 340px;
+  padding: 28px 24px 24px 24px;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0);
-  animation: modalFadeIn 0.2s ease-out;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 14px;
   background: none;
   border: none;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
   cursor: pointer;
-  color: #000;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+  color: #000000;
+  padding: 4px;
 }
 
 .modal-close:hover {
-  background: #fff;
-  color: #000;
-}
-
-.modal-box h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.modal-box p {
-  font-size: 14px;
-  color: #000;
-  line-height: 1.5;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  opacity: 0.7;
 }
