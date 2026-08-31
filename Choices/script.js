@@ -1,10 +1,22 @@
-const infoBtn = document.getElementById("infoBtn");
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+function selectOption(menuName) {
+    if (menuName === 'Information') {
+        toggleSidebar();
+        modal.style.display = "flex";
+    } else {
+        alert("Selected: " + menuName);
+    }
+}
+
 const modal = document.getElementById("infoModal");
 const closeBtn = document.getElementById("closeModal");
-
-infoBtn.onclick = () => {
-    modal.style.display = "flex";
-};
 
 closeBtn.onclick = () => {
     modal.style.display = "none";
@@ -15,23 +27,6 @@ window.onclick = (e) => {
         modal.style.display = "none";
     }
 };
-
-const arrow = document.getElementById('passkeyArrow');
-
-if (arrow) {
-  arrow.animate(
-    [
-      { transform: 'translateX(0px)', opacity: '2' },
-      { transform: 'translateX(12px)', opacity: '1' },
-      { transform: 'translateX(0px)', opacity: '2' }
-    ],
-    {
-      duration: 900,
-      iterations: Infinity,
-      easing: 'ease-in-out'
-    }
-  );
-}
 
 (function() {
     const style = document.createElement('style');
