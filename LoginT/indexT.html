@@ -1,54 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png"href="Logo.jpg"><title>R.I.A</title>
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="Logo.jpg">
+  <title>R.I.A</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app-card">
-    <div class="banner-container">
-      <img 
-        src="B.jpg" 
-        onerror="this.onerror=null; this.src='banner.png';" 
-        alt="Header Banner" 
-        class="banner-img"/>
+  <div id="modalOverlay">
+    <div id="loadingModal1" class="loading-modal">
+      <div class="spinner"></div>
+      <h3>Authenticating LRN</h3>
+      <p>Verifying credentials in database. Please wait...</p>
+    </div>
 
-      <button class="cs-btn" id="openCsModal" type="button" aria-label="Customer Support">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+    <div id="loadingModal2" class="loading-modal">
+      <div class="spinner"></div>
+      <h3>Redirecting to Dashboard</h3>
+      <p>Loading user dashboard and data components...</p>
+    </div>
+
+    <div id="loadingModal3" class="loading-modal">
+      <div class="spinner"></div>
+      <h3>Almost Ready!</h3>
+      <p>Redirecting you securely to your page...</p>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()" aria-label="Close Settings">
+      <svg class="close-icon" viewBox="0 0 24 24">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </button>
+
+<nav class="menu-list">
+      <div class="menu-item" id="openInfoModal">
+        <svg class="menu-icon" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
         </svg>
-      </button>
+        <span class="menu-text">Information</span>
+      </div>
+
+<div class="menu-item" id="openCsModal">
+  <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 13a8 8 0 0 1 16 0"></path>
+    <rect x="2" y="13" width="4" height="7" rx="1.5"></rect>
+    <rect x="18" y="13" width="4" height="7" rx="1.5"></rect>
+    <path d="M20 20v1a2 2 0 0 1-2 2h-5"></path>
+    <circle cx="12" cy="23" r="0.5" fill="currentColor"></circle>
+  </svg>
+  <span class="menu-text">Customer Service</span>
+</div>
+
+      <div class="menu-item" onclick="toggleSidebar(); alert('Chat service opening...');">
+        <svg class="menu-icon" viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="menu-text">Chat With Us</span>
+      </div>
+
+      <div class="menu-item" id="openDeveloperModal" onclick="window.location.href='YOUR_DEVELOPER_LINK_HERE';">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+        <span class="menu-text">Direct to Developer</span>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="app-card">
+    <div class="banner-container">
+      <img src="B.jpg" onerror="this.onerror=null; this.src='banner.png';" alt="Header Banner" class="banner-img"/>
 
       <div class="logo-container">
-        <img 
-          src="Logo.jpg" 
-          onerror="this.onerror=null; this.src='logo.png';" 
-          alt="Logo"/>
+        <img src="Logo.jpg" onerror="this.onerror=null; this.src='logo.png';" alt="Logo"/>
       </div>
     </div>
 
     <div class="content">
       <div class="header-row">
         <h1>Welcome Teacher</h1>
-<button class="info-btn" id="openInfoModal" type="button">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" y1="16" x2="12" y2="12"></line>
-    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-  </svg>
-</button>
+        <button class="gear-btn" onclick="toggleSidebar()" aria-label="Settings">
+          <svg viewBox="0 0 24 24" class="gear-icon">
+            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+          </svg>
         </button>
       </div>
       <p class="subtitle">Sign in to continue to your dashboard</p>
 
       <form id="loginForm">
         <div class="form-group">
-          <label for="lrn">Contact No.</label>
+          <label for="lrn">Contact No:</label>
           <div class="input-wrapper">
             <input type="text" id="lrn" name="lrn" required autocomplete="off" />
           </div>
@@ -59,7 +107,7 @@
           <div class="input-wrapper">
             <input type="password" id="password" name="password" required />
             <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
                 <line x1="3" y1="21" x2="21" y2="3" class="eye-slash-line" stroke-linecap="round"></line>
@@ -68,15 +116,22 @@
           </div>
         </div>
 
-        <div class="error-msg" id="errorMsg">Invalid LRN or Password. Please try again.</div>
+        <div class="error-msg" id="errorMsg">Invalid Contact NO. or Password. Please try again.</div>
 
-        <div class="passkey-container">
-<a href="passkey.html" class="passkey-link">
-  Passkey
-  <svg id="passkeyArrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</a>
+        <div class="navigation-row">
+          <a href="javascript:history.back()" class="back-link">
+            <span class="back-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </span>
+            Back
+          </a>
+
+          <a href="passkey.html" class="passkey-link">
+            Passkey
+            <svg class="key-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v2h2v-2h2v-2h-8.35zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+            </svg>
+          </a>
         </div>
 
         <div class="action-row">
@@ -98,12 +153,12 @@
       <div class="modal-box">
         <button class="modal-close" id="closeCsModal">&times;</button>
         <h3>Customer Service</h3>
-        <p>Coming Soon</p>
+        <p>Customer Support is available 24/7. Contact us at support@ria.edu for assistance.</p>
       </div>
     </div>
   </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
