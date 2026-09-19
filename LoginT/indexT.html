@@ -12,7 +12,7 @@
   <div id="modalOverlay">
     <div id="loadingModal1" class="loading-modal">
       <div class="spinner"></div>
-      <h3>Authenticating LRN</h3>
+      <h3>Authenticating Contact No.</h3>
       <p>Verifying credentials in database. Please wait...</p>
     </div>
 
@@ -38,7 +38,7 @@
       </svg>
     </button>
 
-<nav class="menu-list">
+    <nav class="menu-list">
       <div class="menu-item" id="openInfoModal">
         <svg class="menu-icon" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
@@ -46,18 +46,18 @@
         <span class="menu-text">Information</span>
       </div>
 
-<div class="menu-item" id="openCsModal">
-  <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 13a8 8 0 0 1 16 0"></path>
-    <rect x="2" y="13" width="4" height="7" rx="1.5"></rect>
-    <rect x="18" y="13" width="4" height="7" rx="1.5"></rect>
-    <path d="M20 20v1a2 2 0 0 1-2 2h-5"></path>
-    <circle cx="12" cy="23" r="0.5" fill="currentColor"></circle>
-  </svg>
-  <span class="menu-text">Customer Service</span>
-</div>
+      <div class="menu-item" id="openCsModal">
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 13a8 8 0 0 1 16 0"></path>
+          <rect x="2" y="13" width="4" height="7" rx="1.5"></rect>
+          <rect x="18" y="13" width="4" height="7" rx="1.5"></rect>
+          <path d="M20 20v1a2 2 0 0 1-2 2h-5"></path>
+          <circle cx="12" cy="23" r="0.5" fill="currentColor"></circle>
+        </svg>
+        <span class="menu-text">Customer Service</span>
+      </div>
 
-      <div class="menu-item" onclick="toggleSidebar(); alert('Chat service opening...');">
+      <div class="menu-item" id="openChatUsModal">
         <svg class="menu-icon" viewBox="0 0 24 24">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
@@ -96,9 +96,9 @@
 
       <form id="loginForm">
         <div class="form-group">
-          <label for="lrn">Contact No:</label>
+          <label for="contact">Contact No:</label>
           <div class="input-wrapper">
-            <input type="text" id="lrn" name="lrn" required autocomplete="off" />
+            <input type="text" id="contact" name="contact" required autocomplete="off" />
           </div>
         </div>
 
@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <div class="error-msg" id="errorMsg">Invalid Contact NO. or Password. Please try again.</div>
+        <div class="error-msg" id="errorMsg">Invalid Contact No. or Password. Please try again.</div>
 
         <div class="navigation-row">
           <a href="javascript:history.back()" class="back-link">
@@ -141,19 +141,88 @@
       </form>
     </div>
 
-    <div class="modal-overlay" id="infoModal">
-      <div class="modal-box">
-        <button class="modal-close" id="closeInfoModal">&times;</button>
-        <h3>Student Portal Info</h3>
-        <p>Please enter your 11-digit Contact Number and password to access your teacher dashboard.</p>
+    <div id="infoModal" class="info-modal">
+      <div class="modalContent">
+        <div class="modalHeader">
+          <h2>Information</h2>
+          <button id="closeInfoModal" aria-label="Close Modal">&times;</button>
+        </div>
+        <div class="infoCardsContainer">
+          <div class="infoCard">
+            <h3>Teacher Portal Overview</h3>
+            <p>Welcome to the R.I.A Teacher Portal. Access your records, track details, and navigate your academic tools securely.</p>
+          </div>
+          <div class="infoCard">
+            <h3>Contact No. Guidelines</h3>
+            <p>Ensure you enter your official contact number and correct password to prevent temporary lockout.</p>
+          </div>
+          <div class="infoCard">
+            <h3>Support & Help</h3>
+            <p>If you encounter login difficulties, reach out via Customer Service or use the chat assistant option from the sidebar menu.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="modal-overlay" id="csModal">
-      <div class="modal-box">
-        <button class="modal-close" id="closeCsModal">&times;</button>
-        <h3>Customer Service</h3>
-        <p>Customer Support is available 24/7. Contact us at support@ria.edu for assistance.</p>
+    <div class="customer-service-modal" id="customerServiceModal">
+      <div class="cs-modal-content">
+        <div class="cs-modal-header">
+          <h2>Customer Service</h2>
+          <button class="cs-close-btn" id="closeCsModal">&times;</button>
+        </div>
+        
+        <div class="cs-chat-body" id="csChatBody">
+          <div class="cs-agent-welcome">
+            <div class="cs-avatar">
+              <img src="Logo.jpg" alt="Logo">
+            </div>
+            <div class="cs-options-box">
+              <button class="cs-option-btn" onclick="handleCsOption('Account Termination')">Account Termination</button>
+              <button class="cs-option-btn" onclick="handleCsOption('Create An Account')">Create An Account</button>
+              <button class="cs-option-btn" onclick="handleCsOption('Report a Bug')">Report a Bug</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-chat-footer">
+          <div class="cs-input-wrapper">
+            <input type="text" id="csMessageInput" placeholder="Type your message" onkeypress="checkEnter(event)">
+          </div>
+          <button class="cs-send-btn" onclick="sendCsMessage()">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer-service-modal" id="chatUsModal">
+      <div class="cs-modal-content">
+        <div class="cs-modal-header">
+          <h2>Chat With Us</h2>
+          <button class="cs-close-btn" id="closeChatUsModal">&times;</button>
+        </div>
+        
+        <div class="cs-chat-body" id="chatUsBody">
+          <div class="cs-agent-welcome">
+            <div class="cs-avatar">
+              <img src="Logo.jpg" alt="Logo">
+            </div>
+            <div class="cs-options-box">
+              <button class="cs-option-btn" onclick="handleChatUsOption('Developer')">Developer</button>
+              <button class="cs-option-btn" onclick="handleChatUsOption('Admin')">Admin</button>
+              <button class="cs-option-btn" onclick="handleChatUsOption('Support')">Support</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-chat-footer">
+          <div class="cs-input-wrapper">
+            <input type="text" id="chatUsMessageInput" placeholder="Type your message" onkeypress="checkChatUsEnter(event)">
+          </div>
+          <button class="cs-send-btn" onclick="sendChatUsMessage()">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
