@@ -8,14 +8,14 @@ function toggleSidebar() {
   }
 }
 
-    const studentDatabase = [
-      { lrn: "100000000001", password: "password123" },
-      { lrn: "100000000002", password: "studentPass2" },
-      { lrn: "100000000003", password: "mySecret456" },
-      { lrn: "100000000004", password: "loginPass2026" },
-      { lrn: "100000000005", password: "passkeyVal5" },
-      { lrn: "100000000006", password: "student6Key" },
-      { lrn: "100000000007", password: "adminPassword7" }
+  const studentDatabase = [
+      { contact: "100", password: "123", page: "../Lumpod/SD.html" },
+      { contact: "100000000002", password: "studentPass2", page: "dashboard.html" },
+      { contact: "100000000003", password: "mySecret456", page: "dashboard.html" },
+      { contact: "100000000004", password: "loginPass2026", page: "dashboard.html" },
+      { contact: "100000000005", password: "passkeyVal5", page: "dashboard.html" },
+      { contact: "100000000006", password: "student6Key", page: "dashboard.html" },
+      { contact: "100000000007", password: "adminPassword7", page: "dashboard.html" }
     ];
 
 const togglePasswordBtn = document.getElementById('togglePassword');
@@ -81,37 +81,165 @@ if (loginForm) {
 }
 
 const infoModal = document.getElementById('infoModal');
-const csModal = document.getElementById('csModal');
+const csModal = document.getElementById('customerServiceModal');
+const chatUsModal = document.getElementById('chatUsModal');
 
 const openInfoModal = document.getElementById('openInfoModal');
 if (openInfoModal) {
   openInfoModal.addEventListener('click', () => {
     toggleSidebar();
-    if (infoModal) infoModal.classList.add('active');
+    if (infoModal) infoModal.classList.add('show');
   });
 }
 
 const closeInfoModal = document.getElementById('closeInfoModal');
-if (closeInfoModal) closeInfoModal.addEventListener('click', () => infoModal.classList.remove('active'));
+if (closeInfoModal) closeInfoModal.addEventListener('click', () => infoModal.classList.remove('show'));
 
 const openCsModal = document.getElementById('openCsModal');
 if (openCsModal) {
   openCsModal.addEventListener('click', () => {
     toggleSidebar();
-    if (csModal) csModal.classList.add('active');
+    if (csModal) csModal.classList.add('show');
   });
 }
 
 const closeCsModal = document.getElementById('closeCsModal');
-if (closeCsModal) closeCsModal.addEventListener('click', () => csModal.classList.remove('active'));
+if (closeCsModal) closeCsModal.addEventListener('click', () => csModal.classList.remove('show'));
 
-[infoModal, csModal].forEach(modal => {
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
+const openChatUsModal = document.getElementById('openChatUsModal');
+if (openChatUsModal) {
+  openChatUsModal.addEventListener('click', () => {
+    toggleSidebar();
+    if (chatUsModal) chatUsModal.classList.add('show');
+  });
+}
+
+const closeChatUsModal = document.getElementById('closeChatUsModal');
+if (closeChatUsModal) closeChatUsModal.addEventListener('click', () => chatUsModal.classList.remove('show'));
+
+window.addEventListener('click', (e) => {
+  if (e.target === infoModal) {
+    infoModal.classList.remove('show');
+  }
+  if (e.target === csModal) {
+    csModal.classList.remove('show');
+  }
+  if (e.target === chatUsModal) {
+    chatUsModal.classList.remove('show');
   }
 });
+
+const csChatBody = document.getElementById('csChatBody');
+const csMessageInput = document.getElementById('csMessageInput');
+
+function handleCsOption(optionText) {
+  appendCsUserMessage(optionText);
+  
+  setTimeout(() => {
+    let botReply = "Thank you for reaching out regarding " + optionText + ". A support representative will review your request shortly.";
+if (optionText === 'Account Termination') {
+      botReply = "To process an account termination request, please provide a detailed statement explaining your reasons for closing the account. Once submitted, please remain available and wait for a customer service agent to review your case and assist you with the final steps.";
+    } else if (optionText === 'Create An Account') {
+      botReply = "To create a new account, please locate and click the 'Create Account' button within the choices menu. Carefully fill out all required fields in the registration form and submit your details. Please allow up to 24 hours for our system to process your application. If your account is still not created after the 24-hour window has passed, please select 'Report a Bug' from the menu so our support team can assist you further.";
+    } else if (optionText === 'Report a Bug') {
+      botReply = "Please describe the bug or technical issue you encountered in as much detail as possible, including what you were trying to do and any error messages you saw. This will help our customer service and engineering teams thoroughly investigate and resolve the problem for you.";
+    }
+    appendCsBotMessage(botReply);
+  }, 600);
+}
+
+function sendCsMessage() {
+  if (!csMessageInput) return;
+  const text = csMessageInput.value.trim();
+  if (text === "") return;
+  
+  appendCsUserMessage(text);
+  csMessageInput.value = "";
+
+  setTimeout(() => {
+    appendCsBotMessage("Got your message! We'll get back to you soon regarding: \"" + text + "\"");
+  }, 700);
+}
+
+function checkEnter(e) {
+  if (e.key === 'Enter') {
+    sendCsMessage();
+  }
+}
+
+function appendCsUserMessage(text) {
+  if (!csChatBody) return;
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'cs-message user';
+  msgDiv.textContent = text;
+  csChatBody.appendChild(msgDiv);
+  csChatBody.scrollTop = csChatBody.scrollHeight;
+}
+
+function appendCsBotMessage(text) {
+  if (!csChatBody) return;
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'cs-message bot';
+  msgDiv.textContent = text;
+  csChatBody.appendChild(msgDiv);
+  csChatBody.scrollTop = csChatBody.scrollHeight;
+}
+
+const chatUsBody = document.getElementById('chatUsBody');
+const chatUsMessageInput = document.getElementById('chatUsMessageInput');
+
+function handleChatUsOption(optionText) {
+  appendChatUsUserMessage(optionText);
+  
+  setTimeout(() => {
+    let botReply = `Connecting you to the ${optionText} team. Please state your inquiry.`;
+    if (optionText === 'Developer') {
+      botReply = "Developer channel active. What technical aspect can we assist you with?";
+    } else if (optionText === 'Admin') {
+      botReply = "Admin desk reached. Please provide details regarding your administrative request.";
+    } else if (optionText === 'Support') {
+      botReply = "Support team online. How can we help you today?";
+    }
+    appendChatUsBotMessage(botReply);
+  }, 600);
+}
+
+function sendChatUsMessage() {
+  if (!chatUsMessageInput) return;
+  const text = chatUsMessageInput.value.trim();
+  if (text === "") return;
+  
+  appendChatUsUserMessage(text);
+  chatUsMessageInput.value = "";
+
+  setTimeout(() => {
+    appendChatUsBotMessage(`Message received. Someone will reply to you shortly regarding: "${text}"`);
+  }, 700);
+}
+
+function checkChatUsEnter(e) {
+  if (e.key === 'Enter') {
+    sendChatUsMessage();
+  }
+}
+
+function appendChatUsUserMessage(text) {
+  if (!chatUsBody) return;
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'cs-message user';
+  msgDiv.textContent = text;
+  chatUsBody.appendChild(msgDiv);
+  chatUsBody.scrollTop = chatUsBody.scrollHeight;
+}
+
+function appendChatUsBotMessage(text) {
+  if (!chatUsBody) return;
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'cs-message bot';
+  msgDiv.textContent = text;
+  chatUsBody.appendChild(msgDiv);
+  chatUsBody.scrollTop = chatUsBody.scrollHeight;
+}
 
 (function() {
   const style = document.createElement('style');
