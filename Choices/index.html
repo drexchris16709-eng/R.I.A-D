@@ -74,23 +74,268 @@
 </div>
 
 <div class="bottom">
-    <a href="register.html" class="bottom-link">Create Account</a>
+    <a href="javascript:void(0);" onclick="openCreateAccountModal()" class="bottom-link">Create Account</a>
     <a href="special.html" class="bottom-link">Special User</a>
 </div>
 
-<div id="infoModal">
-    <div class="modalBox">
-        <button id="closeModal">✕</button>
-        <h3>About</h3>
-        <p>
-        Welcome to the <strong>Recording Information Application (R.I.A.)</strong>.<br><br>
-        Please select the appropriate user category to proceed to your designated portal.<br><br>
-        <strong>Student</strong> &ndash; Access the student portal to view academic information, announcements, and other student services.<br><br>
-        <strong>Teacher</strong> &ndash; Access the teacher portal to manage classes, records, and educational resources.<br><br>
-        <strong>Special User</strong> &ndash; Access the administrative portal for authorized personnel with advanced system privileges.<br><br>
-        Thank you for using <strong>R.I.A</strong>, your trusted platform for efficient and organized information management.
-        </p>
+<div id="createAccountModal" class="info-modal">
+    <div class="modalContent create-account-content">
+        <div class="modalHeader create-account-header">
+            <h2>Create Account</h2>
+            <button id="closeCreateAccount" aria-label="Close Create Account">&times;</button>
+        </div>
+        
+        <div id="createAccountView1" class="create-account-body">
+            <img src="Logo.jpg" alt="Logo" class="create-account-logo">
+            <button class="register-btn" onclick="switchCreateAccountView('role-select', this)">Register</button>
+        </div>
+
+        <div id="createAccountViewRole" class="create-account-body" style="display: none;">
+            <img src="Logo.jpg" alt="Logo" class="create-account-logo">
+            <button class="register-btn" onclick="switchCreateAccountView('student-form', this)">Student</button>
+            <button class="register-btn" onclick="switchCreateAccountView('teacher-form', this)">Teacher</button>
+            <p class="create-account-note">Note: Please wait up to 24 hours before submitting another request. Thank you for your patience.</p>
+        </div>
+
+        <div id="createAccountViewStudent" class="create-account-form-body" style="display: none;">
+            <div class="form-header-container">
+                <div class="form-header-left">
+                    <span class="form-role-title">Student</span>
+                    <img src="Logo.jpg" alt="Logo" class="form-main-logo">
+                </div>
+                <div class="form-header-right">
+                    <span class="developer-label">Developer</span>
+                    <span class="developer-name">Cotcots</span>
+                    <p class="form-instruction-note">Note: Please fill in all the required credentials before submitting your request. Allow up to 24 hours for processing. We will send a confirmation email to the Gmail account connected to your LRN once your account has been successfully created.</p>
+                </div>
+            </div>
+            
+            <form class="account-form" onsubmit="handleAccountRequest(event)">
+                <div class="input-group">
+                    <label>LRN:</label>
+                    <input type="text" required>
+                </div>
+                <div class="input-group">
+                    <label>Password:</label>
+                    <input type="password" required>
+                </div>
+                <div class="input-group">
+                    <label>School:</label>
+                    <input type="text" required>
+                </div>
+                <button type="submit" class="request-btn">Request</button>
+            </form>
+        </div>
+
+        <div id="createAccountViewTeacher" class="create-account-form-body" style="display: none;">
+            <div class="form-header-container">
+                <div class="form-header-left">
+                    <span class="form-role-title">Teacher</span>
+                    <img src="Logo.jpg" alt="Logo" class="form-main-logo">
+                </div>
+                <div class="form-header-right">
+                    <span class="developer-label">Developer</span>
+                    <span class="developer-name">Cotcots</span>
+                    <p class="form-instruction-note">Note: Please fill in all the required credentials before submitting your request. Allow up to 24 hours for processing. We will send a confirmation email to the Gmail account connected to your LRN once your account has been successfully created.</p>
+                </div>
+            </div>
+            
+            <form class="account-form" onsubmit="handleAccountRequest(event)">
+                <div class="input-group">
+                    <label>Contact No:</label>
+                    <input type="text" required>
+                </div>
+                <div class="input-group">
+                    <label>Password:</label>
+                    <input type="password" required>
+                </div>
+                <div class="input-group">
+                    <label>School:</label>
+                    <input type="text" required>
+                </div>
+                <button type="submit" class="request-btn">Request</button>
+            </form>
+        </div>
     </div>
+</div>
+
+<div id="successModal" class="info-modal">
+    <div class="modalContent success-modal-content">
+        <img src="Logo.jpg" alt="Logo" class="success-logo">
+        <h3>Request Sent!</h3>
+        <p>Your account request has been successfully submitted. Please wait up to 24 hours for processing. A confirmation email will be sent once approved.</p>
+        <button class="success-ok-btn" onclick="closeSuccessModal()">Okay</button>
+    </div>
+</div>
+
+<div id="infoModal" class="info-modal">
+    <div class="modalContent">
+        <div class="modalHeader">
+            <h2>Information</h2>
+            <button id="closeModal" aria-label="Close Modal">&times;</button>
+        </div>
+        <div class="infoCardsContainer">
+            <div class="infoCard">
+                <h3>For Students</h3>
+                <p>Access the student portal to view academic information, announcements, and other student services.</p>
+            </div>
+            <div class="infoCard">
+                <h3>For Teacher</h3>
+                <p>Access the teacher portal to manage classes, records, and educational resources.</p>
+            </div>
+            <div class="infoCard">
+                <h3>For Special User</h3>
+                <p>Access the administrative portal for authorized personnel with advanced system privileges.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="systemNoticeModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>System Notice</h2>
+      <button id="closeSystemNotice" aria-label="Close System Notice">&times;</button>
+    </div>
+    
+    <div class="infoCardsContainer notice-list">
+      <button class="notice-card-btn" onclick="openNoticeDetail('From The Developers')">
+        <span>From The Developers</span>
+        <span class="arrow">&gt;</span>
+      </button>
+      
+      <button class="notice-card-btn" onclick="openNoticeDetail('System Warning')">
+        <span>System Warning</span>
+        <span class="arrow">&gt;</span>
+      </button>
+      
+      <button class="notice-card-btn" onclick="openNoticeDetail('Account Termination')">
+        <span>Account Termination</span>
+        <span class="arrow">&gt;</span>
+      </button>
+      
+      <button class="notice-card-btn" onclick="openNoticeDetail('New Features')">
+        <span>New Features</span>
+        <span class="arrow">&gt;</span>
+      </button>
+
+      <button class="notice-card-btn" onclick="openNoticeDetail('Manual & Guidelines')">
+        <span>Manual & Guidelines</span>
+        <span class="arrow">&gt;</span>
+      </button>
+
+      <button class="notice-card-btn" onclick="openNoticeDetail('Partnership')">
+        <span>Partnership</span>
+        <span class="arrow">&gt;</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="noticeDetailModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2 id="noticeDetailTitle">Detail</h2>
+      <button id="closeNoticeDetail" aria-label="Close Detail">&times;</button>
+    </div>
+    <div class="infoCardsContainer">
+      <div class="infoCard" id="noticeDetailCardWrapper">
+        <p id="noticeDetailText">Detailed information goes here...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="partnershipVideosModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>Partnership Videos</h2>
+      <button id="closePartnershipVideos" aria-label="Close Partnership Videos">&times;</button>
+    </div>
+    <div class="infoCardsContainer">
+      <div class="partnership-videos-wrapper">
+        <video class="partnership-video" autoplay muted loop playsinline>
+          <source src="A1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video class="partnership-video" autoplay muted loop playsinline>
+          <source src="A2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video class="partnership-video" autoplay muted loop playsinline>
+          <source src="A3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video class="partnership-video" autoplay muted loop playsinline>
+          <source src="A4.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="socialIconsContainer small-social-icons">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Discord">
+          <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="manualPicturesModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>Manual & Guidelines</h2>
+      <button id="closeManualPictures" aria-label="Close Manual Pictures">&times;</button>
+    </div>
+    <div class="infoCardsContainer">
+      <div class="manual-pictures-wrapper">
+        <img class="manual-picture" src="C1.png" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+        <img class="manual-picture" src="C4.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="socialModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>Social Media's</h2>
+      <button id="closeSocialModal" aria-label="Close Social Media Modal">&times;</button>
+    </div>
+    <div class="socialIconsContainer">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      </a>
+      <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Discord">
+        <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="otherAppsModal" class="info-modal">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>Other Apps</h2>
+      <button id="closeOtherApps" aria-label="Close Other Apps">&times;</button>
+    </div>
+    <div class="infoCardsContainer" style="justify-content: center; align-items: center; text-align: center;">
+      <h2 style="font-size: 32px; font-weight: 600; color: #ffffff; margin: auto;">Comig Soon</h2>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
