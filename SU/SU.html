@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.I.A Special User Section</title>
+      <link rel="icon" type="image/png" href="Logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="banner-container">
+        <img src="B.jpg" alt="Background">
+        <div class="banner-gradient"></div>
+    </div>
+
+    <div class="main-content">
+        
+        <div class="logo-wrapper">
+            <img src="Logo.jpg" alt="R.I.A Logo">
+        </div>
+
+        <div class="titles-wrapper">
+            <p class="developer-text">Developer: Semp</p>
+            <h1 class="main-title">Special User</h1>
+            <p class="subtitle-text">Section</p>
+        </div>
+
+        <div class="form-container">
+            <div class="input-group-wrapper">
+                <div class="input-inner-box">
+                    <label for="pinInput" class="input-label">User ID:</label>
+                    <input 
+                        type="password" 
+                        id="pinInput" 
+                        maxlength="4" 
+                        inputmode="numeric"
+                        placeholder="Last 4-digit" 
+                        class="pin-input"
+                    >
+                </div>
+                <p id="errorMsg" class="error-message"></p>
+            </div>
+
+            <button id="loginBtn" class="login-btn">
+                Login
+            </button>
+        </div>
+    </div>
+
+    <div class="back-nav-container">
+        <button id="backBtn" class="back-btn">
+            <span class="back-icon-circle">&lt;</span>
+            <span class="back-text">Back</span>
+        </button>
+    </div>
+
+    <div id="loadingModal" class="loading-modal">
+        <div class="loading-card">
+            <div class="spinner"></div>
+            <p class="loading-title">Verifying credentials...</p>
+            <p class="loading-subtitle">Please wait securely</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
