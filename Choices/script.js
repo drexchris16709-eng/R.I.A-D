@@ -83,14 +83,12 @@ const noticeContentData = {
         'Get ready for the next generation of R.I.A! We\'re officially launching our first-ever website integration — a major step toward a seamless interface across every platform we support. This is just the beginning: our roadmap is packed with new features, UX enhancements, and adaptive modules coming soon to boost your productivity.',
         'Behind the scenes, our specialized system framework, Super AI George, now manages real-time optimization, rendering, and interface adaptability to keep performance smooth and stable. Future improvements will continue to roll out automatically through this framework — refining the system without requiring hard reboots.'
     ],
-    
     'System Warning': [
         'Security notice: Please ensure your login credentials are kept confidential. Unauthorized attempts to bypass access levels or tamper with system logs will trigger safety blocks.',
         'All logs, user data records, configurations, and cryptographic parameters handled in this system are strictly confidential. Sharing, exporting, or disclosing internal system data to outside parties is prohibited — always lock your session when leaving your device unattended.',
         'Extended use of this system increases background processing load and may cause your device to run warmer than usual. Take periodic breaks, avoid running other heavy processes at the same time, and close the session if your device becomes uncomfortably warm or starts to stutter.',
         'Some sections contain advanced technical or mature-audience content intended for users aged 18 and older. By accessing these sections, you confirm you meet the age requirement — parental guidance is advised for unsupervised minors.'
     ],
-    
     'Account Termination': 'Accounts found in violation of platform policies, or those flagged for suspicious data entries, are subject to permanent deactivation. Reach out to administration if you have questions.',
     'New Features': 'Check out our latest upgrades! We have optimized dashboard responsiveness, integrated cleaner minimalist design aesthetics, and improved overall navigation speed.',
     'Manual & Guidelines': 'Follow the step-by-step guidelines provided here to properly navigate user portals, submit records, and utilize application functions efficiently.',
@@ -232,6 +230,10 @@ window.onclick = (e) => {
     if (e.target == otherAppsModal) otherAppsModal.classList.remove("show");
     if (e.target == createAccountModal) createAccountModal.classList.remove("show");
     if (e.target == successModal) successModal.classList.remove("show");
+    if (e.target == manualPicturesModal) {
+        manualPicturesModal.classList.remove("show");
+        noticeDetailModal.classList.add("show");
+    }
 };
 
 (function() {
@@ -496,9 +498,3 @@ function openManualPicturesModal() {
     manualPicturesModal.classList.add("show");
 }
 
-window.onclick = (e) => {
-    if (e.target == manualPicturesModal) {
-        manualPicturesModal.classList.remove("show");
-        noticeDetailModal.classList.add("show");
-    }
-};
