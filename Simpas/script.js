@@ -420,11 +420,11 @@ accData.forEach((sec)=>{
 });
 
 const featureData = [
-  { image: './C1.jpg', tag: 'Brigada Eskwela' },
-  { image: './C2.jpg', tag: 'Cariñosa' },
-  { image: './C3.jpg', tag: 'Early Birds' },
-  { image: './C4.jpg', tag: 'PTA Meeting' },
-  { image: './C5.jpg', tag: 'Group Selfie' },
+  { image: './E.jpg', tag: '???' },
+  { image: './E.jpg', tag: '???' },
+  { image: './E.jpg', tag: '???' },
+  { image: './E.jpg', tag: '???' },
+  { image: './E.jpg', tag: '???' },
 ];
 
 const featureTrack = document.getElementById('featureTrack');
