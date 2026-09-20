@@ -79,7 +79,7 @@ function openPartnershipVideosModal() {
 
 const noticeContentData = {
     'From The Developers': [
-        'Welcome to R.I.A (Recording Information Application)! R.I.A is an information management and recording system designed to organize, store, manage, and provide easy access to important school-related information. It combines information management, communication, and interactive features into one platform, helping students and teachers access records, announcements, schedules, activities, events, and other essential information in a more organized and convenient way.',
+        'Welcome to R.I.A (Recording Information Application)! R.I.A is an information management and recording system designed to organize, manage, and provide easy access to school-related information, including records, announcements, schedules, activities, and events.',
         'Get ready for the next generation of R.I.A! We\'re officially launching our first-ever website integration — a major step toward a seamless interface across every platform we support. This is just the beginning: our roadmap is packed with new features, UX enhancements, and adaptive modules coming soon to boost your productivity.',
         'Behind the scenes, our specialized system framework, Super AI George, now manages real-time optimization, rendering, and interface adaptability to keep performance smooth and stable. Future improvements will continue to roll out automatically through this framework — refining the system without requiring hard reboots.'
     ],
