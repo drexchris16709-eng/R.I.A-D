@@ -575,3 +575,84 @@ menuBtn.addEventListener('click', ()=>{
 });
 overlay.addEventListener('click', closeSidebar);
 
+(function () {
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupSliderContainer = document.getElementById('sliderContainer');
+  const popupSlides = popupSliderContainer.querySelectorAll('.slide');
+  let popupCurrent = 0;
+  let popupAutoSlideTimer;
+
+  function popupShowSlide(index) {
+    popupSlides[popupCurrent].classList.remove('active');
+    popupCurrent = (index + popupSlides.length) % popupSlides.length;
+    popupSlides[popupCurrent].classList.add('active');
+  }
+
+  function popupNextSlide() {
+    popupShowSlide(popupCurrent + 1);
+  }
+
+  function popupStartAutoSlide() {
+    clearInterval(popupAutoSlideTimer);
+    popupAutoSlideTimer = setInterval(popupNextSlide, 4000);
+  }
+
+  function popupStopAutoSlide() {
+    clearInterval(popupAutoSlideTimer);
+  }
+
+  // Touch swipe support (mobile)
+  let popupTouchStartX = 0;
+  let popupTouchEndX = 0;
+
+  popupSliderContainer.addEventListener('touchstart', (e) => {
+    popupTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  popupSliderContainer.addEventListener('touchend', (e) => {
+    popupTouchEndX = e.changedTouches[0].screenX;
+    popupHandleSwipe();
+  }, { passive: true });
+
+  function popupHandleSwipe() {
+    const diff = popupTouchStartX - popupTouchEndX;
+    const threshold = 40;
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        popupShowSlide(popupCurrent + 1);
+      } else {
+        popupShowSlide(popupCurrent - 1);
+      }
+      popupStartAutoSlide();
+    }
+  }
+
+  // Tap left/right halves to navigate
+  popupSliderContainer.addEventListener('click', (e) => {
+    const rect = popupSliderContainer.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    if (clickX < rect.width / 2) {
+      popupShowSlide(popupCurrent - 1);
+    } else {
+      popupShowSlide(popupCurrent + 1);
+    }
+    popupStartAutoSlide();
+  });
+
+  function openFeaturedPopup() {
+    popupOverlay.style.display = 'flex';
+    popupCurrent = 0;
+    popupSlides.forEach(s => s.classList.remove('active'));
+    popupSlides[0].classList.add('active');
+    popupStartAutoSlide();
+  }
+
+  function closeFeaturedPopup() {
+    popupOverlay.style.display = 'none';
+    popupStopAutoSlide();
+  }
+
+  window.closeFeaturedPopup = closeFeaturedPopup;
+
+  window.addEventListener('load', openFeaturedPopup);
+})();
