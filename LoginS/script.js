@@ -9,12 +9,12 @@ function toggleSidebar() {
 }
 
 const studentDatabase = [
-  { lrn: "136741140482", password: "LMND4556", page: "../Lobendino/SD.html" },
+  { lrn: "425523150083", password: "PogiSiAyap123", page: "../Ayap/SD.html" },
   { lrn: "136736120259", password: "775631", page: "../Lumpod/SD.html" },
-  { lrn: "136741140692", password: "SS1FFGH", page: "../Marquez/SD.html" },
-  { lrn: "485552150053", password: "6677KLMG", page: "../Delarosa/SD.html" },
-  { lrn: "136598140127", password: "Rover719", page: "../Costales/SD.html" },
-  { lrn: "136735150324", password: "GigaNiggaHunter123", page: "../Simpas/SD.html" },
+  { lrn: "117783140111", password: "sarapnisalino223", page: "../Salino/SD.html" },
+  { lrn: "136736140463", password: "455DDFG", page: "../Basis/SD.html" },
+  { lrn: "124638140013", password: "JuanceTheGreat1", page: "../Juance/SD.html" },
+  { lrn: "123456789123", password: "123", page: "../Test/SD.html" },
   { lrn: "100000000007", password: "adminPassword7", page: "admin.html" }
 ];
 
